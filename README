@@ -1,7 +1,7 @@
 Heat master
 ==========
 
-<b>This work is a collaboration with Baptiste Pauget.</b>
+<b>This master is my own work, but the worker is a collaboration with Baptiste Pauget.</b>
 
 Master software for parallel simulation of a discrete heat equation/propagation equation (depends on the workers!)
 
