@@ -1,0 +1,7 @@
+heat_master
+*.swp
+*.o
+moc_*
+Makefile
+*.pro.user
+ui_*.h

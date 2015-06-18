@@ -7,13 +7,14 @@ Worker::Worker(MainWindow *display, std::vector<std::vector<int> > &grid_, QObje
     isReservoir.resize(grid_.size(), std::vector<bool>(grid_[0].size(),false));
     for(size_t row=0; row < grid_.size(); row++) {
         for(size_t col=0; col < grid_[0].size(); col++) {
-            grid[row][col] = grid_[row][col] % 1000;
-            isReservoir[row][col] = (grid_[row][col] >= 1000);
+            grid[row][col] = grid_[row][col] % 32000;
+            isReservoir[row][col] = (grid_[row][col] >= 32000);
         }
     }
 
-    serv = new TcpServer(&grid, this);
+    serv = new TcpServer(&grid, isReservoir, this);
     connect(serv, SIGNAL(iterated()), this, SLOT(triggerRender()));
+    connect(serv, SIGNAL(nbWorkersChanged(int)), display, SLOT(changeWorkersNum(int)));
 }
 
 Worker::~Worker()
@@ -22,7 +23,6 @@ Worker::~Worker()
 
 void Worker::start()
 {
-    serv->iterate();
 }
 
 void Worker::triggerRender()

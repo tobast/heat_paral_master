@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QImage>
+#include <algorithm>
+#include <QDebug>
 
 namespace Ui {
 class MainWindow;
@@ -18,11 +20,13 @@ public:
 
 public slots:
     void updateImage(const std::vector<std::vector<int> >& grid);
+    void changeWorkersNum(int num);
 
 private:
     Ui::MainWindow *ui;
     QImage img;
     int size,scale;
+    int callsToRefresh;
 };
 
 #endif // MAINWINDOW_H
